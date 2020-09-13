@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>KALKULATOR BMI</title>
+    
+    <style>
+      * {
+        font-size: 32px;
+      }
+      body {
+        background-color: #eee;
+      }
+      .container {
+        margin: 100px auto;
+        width: 65%;
+        background-color: white;
+        box-shadow: 3px 3px 8px black;
+        border-radius: 5px;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .container h1 {
+        text-align: center;
+        font-family: tahoma;
+        letter-spacing: 2px;
+        font-size: 1.8em;
+      }
+      form {
+        display: flex;
+        width: 80%;
+        flex-wrap: wrap;
+        margin: 10px auto;
+      }
+      label:nth-child(2){
+        margin-top: 50px;
+      }
+      label {
+        width: 100%;
+        font-family: Helvetica;
+      }
+      input {
+        width: 100px;
+        height: 80px;
+        border: 2px solid black;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 5px;
+      }
+      form div {
+        width: 100%;
+      }
+      button {
+        width: 180px;
+        height: 60px;
+        background: salmon;
+        color: #eee;
+        
+      }
+      button;nth-child(2) {
+        margin-left: 0px;
+      }
+      
+      .container-2 {
+        visibility: hidden;
+        width: 65%;
+        margin: 30px auto;
+        margin-bottom: 0;
+        background: navy;
+        border-radius: 5px;
+        box-shadow: 3px 3px 8px black;
+        text-align: center;
+        color: white;
+        padding: 20px;
+      }
+      .container-2 h1 {
+        font-size: 2.3em;
+        font-family: tahoma;
+      }
+      
+      .container-3 {
+       visibility: hidden;
+       width: 65%;
+       margin: 0 auto;
+       color: black;
+       padding: 20px;
+       background: salmon;
+       border-radius: 5px;
+       box-shadow: 3px 3px 8px black;
+      }
+      span {
+        font-weight: bold;
+        font-size: .8em;
+      }
+      .container3 ul {
+        margin: 0 auto;
+      }
+      .container-3 li {
+        list-style: none;
+        background: salmon;
+        font-size: 1.5em;
+        font-family: tahoma;
+      }
+      .active{
+       visibility: visible; 
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="container">
+      <h1>KALKULATOR BMI</h1>
+      <form>
+        <label for="inputTinggi">Masukkan Tinggi Anda</label>
+        <input placeholder="CM" type="number" id="inputTinggi"/>
+        
+        <label for="inputBerat">Masukkan Berat Badan Anda</label>
+        <input placeholder="KG" type="number" id="inputBerat"/>
+        
+        <div>
+           <button type="button">CEK</button>
+           <button type="reset">ULANG</button>
+        </div>
+      </form>
+    </div>
+    
+    <div class="container-2">
+      <h3>HASIL BMI</h3>
+      <h1>00,0</h1>
+    </div>
+    
+    <div class="container-3">
+      <ul>
+        <li> < 18,5 = <span>KURUS</span></li>
+        <li> 18,5 -24,9 = <span>NORMAL</span></li>
+        <li> 25 – 29,9 = <span>GEMUK</span></li>
+        <li> > 30 = <span>OBESITAS</span></li>
+      </ul>
+    </div>
+    
+  
+<script>
+  const button = document.querySelectorAll("button")[0];
+  const buttonReset = document.querySelectorAll("button")[1];
+ 
+  const tampilArea = document.querySelector('.container-2 h1');
+  const container2 = document.querySelector('.container-2');
+  const container3 = document.querySelector('.container-3');
+
+  button.addEventListener('click', ()=> {
+  const inputTinggi = parseInt(document.querySelectorAll('input')[0].value);
+  const inputBerat = parseInt(document.querySelectorAll('input')[1].value)
+  const hasilBMI = inputBerat / ((inputTinggi/100) * (inputTinggi/100));
+  
+  tampilArea.innerHTML = hasilBMI.toFixed(1);
+  container2.classList.add('active');
+  container3.classList.add('active');
+  });
+  
+  buttonReset.addEventListener('click', ()=> {
+    tampilArea.innerHTML = '00.0'
+  });
+  
+</script>
+    
+  </body>
+</html>
